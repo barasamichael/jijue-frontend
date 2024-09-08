@@ -15,6 +15,10 @@ class Config:
 
     # Application configuration options
     ORGANIZATION_NAME = os.environ.get("ORGANIZATION_NAME") or "Jijue"
+    BACKEND_URL = os.environ.get("BACKEND_URL") or "http://localhost:3000"
+
+    # File upload configuration options
+    UPLOAD_FOLDER = os.path.join(basedir + "/app/static/documents/")
 
     # M-pesa Payment Settings
     CONSUMER_KEY = os.environ.get(

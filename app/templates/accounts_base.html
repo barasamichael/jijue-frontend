@@ -43,18 +43,8 @@
           <a href="/" class="menu-item"><i class="fas fa-home"></i> Home</a>
           <a href="{{ url_for('accounts.profile') }}" class="menu-item active"><i class="fas fa-user"></i> Profile</a>
           
-          {% if current_user.role == "administrator" %}
-          <a href="{{ url_for('administration.dashboard') }}" class="menu-item"><i class="fas fa-cogs"></i> Administration</a>
-          {% endif %}
-
           <a href="{{ url_for('accounts.payments') }}" class="menu-item"><i class="fas fa-dollar-sign"></i> Payments</a>
-          <a href="{{ url_for('accounts.members') }}" class="menu-item"><i class="fas fa-users"></i> Members</a>
-          <a href="{{ url_for('accounts.events') }}" class="menu-item"><i class="fas fa-calendar-alt"></i> Events</a>
-          <a href="{{ url_for('accounts.opportunities') }}" class="menu-item"><i class="fas fa-briefcase"></i> Opportunities</a>
-          <a href="{{ url_for('accounts.placements') }}" class="menu-item"><i class="fas fa-clipboard-list"></i> Placements</a>
-          <a href="{{ url_for('accounts.businesses') }}" class="menu-item"><i class="fas fa-building"></i> Business Listings</a>
-          <a href="{{ url_for('accounts.businesses') }}" class="menu-item"><i class="fas fa-user-circle"></i> Account Profile</a>
-          <a href="{{ url_for('authentication.member_logout') }}" class="menu-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <a href="{{ url_for('authentication.business_logout') }}" class="menu-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
       </div>
       <div class="main-area">

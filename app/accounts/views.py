@@ -1,7 +1,11 @@
-import flask
+import os
 
+import flask
+import requests
 from flask import jsonify
+from flask_login import current_user
 from flask_login import login_required
+from werkzeug.utils import secure_filename
 
 from . import accounts
 
@@ -15,10 +19,99 @@ from utilities.mpesa_payment import initiate_stk_push
 from utilities.mpesa_payment import query_stk_status
 
 
-@accounts.route("/profile")
+@accounts.route("/profile", methods=["GET", "POST"])
 @login_required
 def profile():
+    if flask.request.method == "POST":
+        # Check if the user uploaded all required files
+        if (
+            "nationalID" not in flask.request.files
+            or "businessCertificate" not in flask.request.files
+            or "kraPin" not in flask.request.files
+        ):
+            flask.flash("Please upload all required documents.", "danger")
+            return flask.redirect(flask.url_for("accounts.profile"))
+
+        national_id_file = flask.request.files["nationalID"]
+        business_cert_file = flask.request.files["businessCertificate"]
+        kra_pin_file = flask.request.files["kraPin"]
+
+        folder = os.path.join(
+            flask.current_app.config["UPLOAD_FOLDER"],
+            str(current_user.businessId),
+        )
+
+        # Ensure the upload folder exists
+        if not os.path.exists(folder):
+            os.makedirs(folder, exist_ok=True)
+
+        # Save files to the upload folder
+        national_id_path = os.path.join(
+            folder,
+            secure_filename("national_id"),
+        )
+        business_cert_path = os.path.join(
+            folder,
+            secure_filename("business_certificate"),
+        )
+        kra_pin_path = os.path.join(
+            folder,
+            secure_filename("kra_pin"),
+        )
+
+        national_id_file.save(national_id_path)
+        business_cert_file.save(business_cert_path)
+        kra_pin_file.save(kra_pin_path)
+
+        # Redirect to the payment page
+        flask.flash("Make payment to cover verification costs", "warning")
+        return flask.redirect(flask.url_for("accounts.payments"))
     return flask.render_template("accounts/profile.html")
+
+
+@accounts.route("/documents/verification", methods=["GET"])
+@login_required
+def perform_verification():
+    # Create documents folder path
+    folder = os.path.join(
+        flask.current_app.config["UPLOAD_FOLDER"], str(current_user.businessId)
+    )
+
+    # Prepare files and data for the backend request
+    files = {
+        "nationalID": open(os.path.join(folder, "national_id"), "rb"),
+        "businessCertificate": open(
+            os.path.join(folder, "business_certificate"), "rb"
+        ),
+        "kraPin": open(os.path.join(folder, "kra_pin"), "rb"),
+    }
+    data = {
+        "businessId": current_user.businessId,
+        "businessName": current_user.businessName,
+    }
+
+    try:
+        backend_url = flask.current_app.config["BACKEND_URL"]
+        response = requests.post(
+            f"{backend_url}/register", files=files, data=data
+        )
+        response_data = response.json()
+
+        if response.status_code == 200:
+            flask.flash("Registration and verification successful.", "success")
+            return flask.render_template(
+                "result.html", result=response_data["credential"]
+            )
+        else:
+            flask.flash(
+                response_data.get("message", "Verification failed."),
+                "danger",
+            )
+            return flask.redirect(flask.url_for("index"))
+
+    except requests.exceptions.RequestException as e:
+        flask.flash(f"Error connecting to backend: {e}", "danger")
+        return flask.redirect(flask.url_for("index"))
 
 
 @accounts.route("/payments")

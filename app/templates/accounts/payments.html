@@ -23,16 +23,16 @@ Payments
         </div>
         <div class="modal-body">
           <form id="paymentForm">
-            <input type="number" class="form-control" id="memberId"  value="{{ current_user.memberId }}" hidden>
+            <input type="number" class="form-control" id="businessId"  value="{{ current_user.businessId }}" hidden>
 
             <div class="mb-3">
               <label for="phone" class="form-label">Phone number</label>
               <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" required>
               <div class="form-text">Your phone number will be automatically formatted.</div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3" class="d-none">
               <label for="amount" class="form-label">Amount</label>
-              <input type="number" class="form-control" id="amount" placeholder="Enter the amount to pay" required>
+              <input type="number" class="form-control" id="amount" placeholder="Enter the amount to pay" value="1" required>
             </div>
             <div class="mb-3">
               <input type="user-id" class="form-control" id="user-id" hidden>
