@@ -160,7 +160,16 @@
               }
 
               if (statusData.message) {
+		      // Display success message
                   displaySuccess(statusData.message);
+
+		      // Redirect to the verification page
+		      if (statusData.message.includes("processed successfully")) {
+    setTimeout(function() {
+        window.location.href = "/account/documents/verification";
+    }, 3000);
+}
+
               } else {
                   return new Promise(resolve => setTimeout(resolve, 5000))
                       .then(queryStatus)
