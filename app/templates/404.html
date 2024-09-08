@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+404 - Page Not Found
+{% endblock title%}
+
+{% block page_content %}
+<link rel="stylesheet" href="/static/css/errors.css">
+<div class="error-container">
+  <div class="error-code">404</div>
+  <div class="error-message">Page Not Found</div>
+  <div class="error-description">The page you are looking for doesn't exist or has been moved.</div>
+  <a href="/" class="btn-primary">Back to Home</a>
+</div>
+{% endblock %}

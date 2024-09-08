@@ -3,8 +3,28 @@ from flask_login import current_user
 
 from . import authentication
 from .forms import LoginForm
+from .forms import RegistrationForm
 
 from ..models import Business
+
+
+@authentication.route("/register", methods=["GET", "POST"])
+def register():
+    form = RegistrationForm()
+
+    if form.validate_on_submit():
+        details = {
+            "businessName": form.businessName.data,
+            "password": form.password.data,
+        }
+        Business.registerAccount(details)
+
+        flask.flash("Registration successful. Feel free to login.", "success")
+        return flask.redirect(flask.url_for("authentication.business_login"))
+
+    return flask.render_template(
+        "accounts/client_registration.html", form=form
+    )
 
 
 @authentication.route("/login", methods=["GET", "POST"])

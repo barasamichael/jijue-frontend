@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+Member Login
+{% endblock %}
+
+{% block page_content %}
+<div class="login-container">
+  <div class="login-card">
+    <!-- Logo -->
+    <div class="logo-container">
+      <img src="/static/img/logo.jpg" alt="{{ app_name }} Logo" class="logo">
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" action="{{ url_for('authentication.member_login') }}" method="POST">
+      {{ form.hidden_tag() }}
+      <div class="input-group">
+        {{ form.emailAddress.label() }}
+        {{ form.emailAddress() }}
+        {% for error in form.emailAddress.errors %}
+        <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div class="input-group">
+        {{ form.password.label() }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+        <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+      <div class="options">
+        <div class="remember-me">
+          {{ form.remember_me.label() }}
+          {{ form.remember_me() }}
+          {% for error in form.remember_me.errors %}
+          <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+        <div class="forgot-password">
+          <a href="forgot-password.html">Forgot Password?</a>
+        </div>
+      </div>
+      {{ form.submit(class = "my-2 custom-btn-primary") }}
+    </form>
+  </div>
+</div>
+{% endblock %}

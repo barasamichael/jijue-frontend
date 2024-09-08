@@ -16,7 +16,7 @@ body {
 .hero-section {
 	background: url('C:/Users/user/Desktop/WhatsApp Image 2024-08-22 at 18.01.51_99a8d072.jpg') no-repeat center center/cover;
 	color: #fff;
-	min-height: 70vh;
+	min-height: 100vh;
 	display: flex;
 	align-items: center;
 }
@@ -95,25 +95,6 @@ footer a:hover {
 	color: #ecf0f1;
 }
 
-.login-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 70vh;
-	padding: 1rem;
-	background-color: #e0f7fa; /* Light cyan */
-}
-
-.login-card {
-	background-color: #f5f5f5; /* Soft gray */
-	border-radius: 12px;
-	padding: 2rem;
-	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-	max-width: 400px;
-	width: 100%;
-	text-align: center;
-}
-
 .logo-container {
 	margin-bottom: 2rem;
 }
@@ -161,50 +142,14 @@ footer a:hover {
 	color: #004080;
 }
 
-.forgot-password a {
-	font-size: 0.9rem;
-	color: #f39c12;
-	text-decoration: none;
-}
-
-.forgot-password a:hover {
-	color: #d35400;
-}
-
-.custom-btn-primary {
-	padding: 0.75rem;
-	font-size: 1.1rem;
-	font-weight: bold;
-	text-align: center;
-	border-radius: 50px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	width: 100%;
-	border: none;
-	background-color: #004080; /* Deep blue */
-	color: #ffffff;
-}
-
-.custom-btn-primary:hover {
-	background-color: #002d5b;
-}
-
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
 	#logo-text {
 		display: none;
 	}
 
-	.login-card {
-		padding: 1.5rem;
-	}
-
 	.input-group input {
 		padding: 0.5rem 0.75rem;
-	}
-
-	.custom-btn-primary {
-		padding: 0.5rem;
 	}
 }
 
@@ -274,3 +219,70 @@ footer a:hover {
 .text-custom {
 	color: #004080;
 }
+
+.hero-section {
+	background-size: cover;
+	background-position: center;
+	padding: 100px 0;
+	position: relative;
+}
+
+.hero-section .overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.hero-section .container {
+	position: relative;
+	z-index: 2;
+}
+
+.navbar {
+	padding: 15px 0;
+}
+
+.feature-box {
+	padding: 30px;
+	text-align: center;
+}
+
+.feature-box h3 {
+	font-weight: 600;
+}
+
+.feature-box p {
+	color: #6c757d;
+}
+
+.call-to-action {
+	background-color: #007bff;
+	padding: 50px 0;
+	color: #fff;
+	text-align: center;
+}
+
+.call-to-action h2 {
+	margin-bottom: 20px;
+}
+
+.partner-logo {
+	width: 150px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	background-color: #f8f9fa;
+	border-radius: 50%;
+}
+
+.partner-logo img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+}
+

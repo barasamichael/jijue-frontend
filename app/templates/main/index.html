@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% block title %}
+Welcome
+{% endblock %}
+
+{% block page_content %}
+<!-- Hero Section -->
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='img/business.jpg') }}');">
+  <div class="overlay"></div>
+  <div class="container text-center text-white">
+    <h1 class="display-4" data-aos="fade-up">Welcome to {{ app_name }}</h1>
+    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Your secure, privacy-focused platform for verifying
+    business credentials with zero-knowledge proof technology.</p>
+    <a href="{{ url_for('authentication.register') }}" class="btn btn-primary btn-lg" data-aos="fade-up" data-aos-delay="200">Get
+      Started</a>
+  </div>
+</div>
+
+<!-- Introduction Section -->
+<section class="container py-5">
+  <div class="row">
+    <div class="col-md-6" data-aos="fade-right">
+      <h2>About {{ app_name }}</h2>
+      <p>{{ app_name }} is a revolutionary platform designed to securely verify business credentials using advanced zero-knowledge proof technology. Our platform prioritizes privacy, ensuring that your sensitive data remains confidential while still enabling efficient verification processes.</p>
+    </div>
+    <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
+      <img src="/static/img/privado.png" class="img-fluid rounded" alt="About {{ app_name }}">
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="container py-5">
+  <h2 class="text-center mb-5">Key Features</h2>
+  <div class="row text-center">
+    <div class="col-md-4 feature-box" data-aos="fade-up">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Zero-Knowledge Proof</h3>
+          <p class="card-text">Verify your business credentials securely without exposing sensitive data. Our platform ensures privacy
+          by using zk-proof technology.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 feature-box" data-aos="fade-up" data-aos-delay="100">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">Automated Verification</h3>
+          <p class="card-text">Experience fast, reliable verification of documents through automated processes, ensuring that your
+          credentials are verified in real-time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 feature-box" data-aos="fade-up" data-aos-delay="200">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">Multi-Factor Authentication</h3>
+          <p class="card-text">Enhance your account security with multi-factor authentication (MFA) using OTPs sent to your phone or
+          email.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="container py-5">
+  <h2 class="text-center mb-5">How {{ app_name }} Works</h2>
+  <div class="row">
+    <div class="col-md-4" data-aos="fade-up">
+      <div class="card-body">
+        <h4 class="card-title py-2">Step 1: Credential Issuance</h4>
+        <p class="card-text">Upload essential business documents like the Business Registration Certificate, KRA PIN, and National ID. {{ app_name }} verifies these through direct integration with relevant authorities and stores a cryptographic proof of their validity on our secure blockchain.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="card-body">
+        <h4 class="card-title py-2">Step 2: Secure Storage</h4>
+        <p class="card-text">Your verified credentials are securely stored in the Provido.ID Cloud Wallet. You have complete control over who can access your information, ensuring your data remains private and secure.</p>
+      </div>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="card-body">
+        <h4 class="card-title py-2">Step 3: Easy Verification</h4>
+        <p class="card-text">Partner institutions like banks and telecoms can instantly verify your credentials through {{ app_name }}. This eliminates the need for repeated document submissions, reducing friction and improving your business's efficiency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="container py-5">
+  <h2 class="text-center mb-5">Why Choose {{ app_name }}?</h2>
+  <div class="row">
+    <div class="col-md-6" data-aos="fade-right">
+      <h3>Enhanced Security</h3>
+      <p>With {{ app_name }}, your business credentials are protected using cutting-edge encryption technologies. Our platform ensures that your data is not just secure, but also remains private, even during verification processes.</p>
+    </div>
+    <div class="col-md-6" data-aos="fade-left">
+      <h3>Efficient Verification</h3>
+      <p>Say goodbye to long waiting times and bureaucratic delays. {{ app_name }} provides real-time verification, helping you get your business up and running faster, without compromising on security or privacy.</p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-6" data-aos="fade-right">
+      <h3>Trustworthy Partner Network</h3>
+      <p>Our platform is trusted by leading institutions across various industries, including finance, telecommunications, and government sectors. Join a network of businesses that value security and efficiency.</p>
+    </div>
+    <div class="col-md-6" data-aos="fade-left">
+      <h3>Scalable Solutions</h3>
+      <p>Whether you're a small business or a large enterprise, {{ app_name }} scales to meet your needs. Our platform grows with your business, offering solutions that adapt to your evolving requirements.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Partner Institutions Section -->
+<section class="container py-5">
+  <h2 class="text-center mb-5">Our Trusted Partners</h2>
+  <div class="row text-center">
+    <div class="col-md-3" data-aos="zoom-in">
+      <div class="partner-logo">
+        <img src="/static/img/equity-bank.png" class="img-fluid mb-3" alt="Equity Bank">
+      </div>
+      <h5>Equity Bank</h5>
+    </div>
+    <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+      <div class="partner-logo">
+        <img src="/static/img/safaricom.png" class="img-fluid mb-3" alt="Safaricom">
+      </div>
+      <h5>Safaricom</h5>
+    </div>
+    <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+      <div class="partner-logo">
+        <img src="/static/img/kra.png" class="img-fluid mb-3" alt="KRA">
+      </div>
+      <h5>KRA</h5>
+    </div>
+    <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+      <div class="partner-logo">
+        <img src="/static/img/e-citizen.png" class="img-fluid mb-3" alt="E-Citizen">
+      </div>
+      <h5>E-Citizen</h5>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="container py-5">
+  <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+  <div class="accordion" id="faqAccordion">
+    <div class="accordion-item" data-aos="fade-up">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          What is Zero-Knowledge Proof Technology?
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Zero-Knowledge Proof (ZKP) is a cryptographic method that allows one party to prove to another that a statement is true without revealing any information beyond the veracity of the statement itself. In {{ app_name }}, ZKP ensures your data remains confidential during verification.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          How Secure is My Data?
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          {{ app_name }} employs state-of-the-art encryption and blockchain technology to secure your data. We ensure that your sensitive information is not only protected from unauthorized access but also remains private even during verification processes.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Who Can Access My Credentials?
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          You have full control over who can access your credentials. Only authorized parties that you grant permission to can view your verified documents, ensuring that your privacy is always maintained.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<div class="call-to-action" data-aos="fade-up">
+  <div class="container">
+    <h2>Ready to Simplify Your Business Credential Verification?</h2>
+    <p>Join the {{ app_name }} platform today and experience the future of secure, private, and efficient
+    verification.</p>
+    <a href="{{ url_for('authentication.register') }}" class="btn btn-light btn-lg">Sign Up Now</a>
+  </div>
+</div>
+{% endblock %}

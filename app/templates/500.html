@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+500 - Internal Server Error
+{% endblock title%}
+
+{% block page_content %}
+<link rel="stylesheet" href="/static/css/errors.css">
+<div class="error-container">
+  <div class="error-code">500</div>
+  <div class="error-message">Internal Server Error</div>
+  <div class="error-description">Something went wrong on our end. Please try again later or contact support.</div>
+  <a href="/" class="btn-primary">Back to Home</a>
+</div>
+{% endblock %}

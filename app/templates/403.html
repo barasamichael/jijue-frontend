@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+403 - Forbidden
+{% endblock title%}
+
+{% block page_content %}
+<link rel="stylesheet" href="/static/css/errors.css">
+<div class="error-container">
+  <div class="error-code">403</div>
+  <div class="error-message">Forbidden</div>
+  <div class="error-description">You do not have permission to access this page. Please contact support if you believe this is an error.</div>
+  <a href="/" class="btn-primary">Back to Home</a>
+</div>
+{% endblock %}

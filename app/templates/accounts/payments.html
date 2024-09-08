@@ -1,0 +1,92 @@
+{% extends "accounts_base.html" %}
+{% block title %}
+Payments
+{% endblock %}
+
+{% block page_content %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<div class="tables-container">
+  <!-- Trigger button to open the modal -->
+  <div class="text-center">
+    <button type="button" class="m-4 mb-0 custom-btn-primary text-center" style="width: 50%;" data-bs-toggle="modal" data-bs-target="#formModal">
+      Click to Make Payment
+    </button>
+  </div>
+
+  <!-- Modal Structure with Form -->
+  <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="formModalLabel">Make M-PESA Payment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="paymentForm">
+            <input type="number" class="form-control" id="memberId"  value="{{ current_user.memberId }}" hidden>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone number</label>
+              <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" required>
+              <div class="form-text">Your phone number will be automatically formatted.</div>
+            </div>
+            <div class="mb-3">
+              <label for="amount" class="form-label">Amount</label>
+              <input type="number" class="form-control" id="amount" placeholder="Enter the amount to pay" required>
+            </div>
+            <div class="mb-3">
+              <input type="user-id" class="form-control" id="user-id" hidden>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success" form="paymentForm">Pay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container for Custom Messages -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
+  </div>
+
+  <div class="container">
+    <!-- Table Section -->
+    <div class="table-container">
+      <h2 id="table-heading">Payment Records</h2>
+      <div class="table-responsive">
+        <table id="example" class="display dataTable" style="width:100%">
+          <thead>
+            <tr>
+              <th>Transaction Date</th>
+              <th>Receipt Number</th>
+              <th>Payment Method</th>
+              <th>Amount</th>
+              <th>Date Recorded</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for payment in payments %}
+            <tr>
+              <td>{{ moment(payment.paymentDate, 'YYYYMMDDHHmmss').format('LLLL') }}</td>
+              <td>{{ payment.receiptNumber }}</td>
+              <td>{{ payment.paymentMethod }}</td>
+              <td>{{ payment.amount }}</td>
+              <td>{{ moment(payment.dateCreated).format('LLLL') }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+      const serverName = "{{ api_server }}";
+  </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="/static/js/accounts/payments.js"></script>
+{% endblock page_content %}

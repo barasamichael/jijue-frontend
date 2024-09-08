@@ -80,11 +80,11 @@
               return;
           }
 
-          const memberId = document.querySelector('#memberId').value;
+          const businessId = document.querySelector('#businessId').value;
           const data = {
               phoneNumber,
               amount,
-              memberId,
+              businessId,
           };
 
           // Close the modal
