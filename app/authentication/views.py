@@ -22,9 +22,7 @@ def register():
         flask.flash("Registration successful. Feel free to login.", "success")
         return flask.redirect(flask.url_for("authentication.business_login"))
 
-    return flask.render_template(
-        "accounts/client_registration.html", form=form
-    )
+    return flask.render_template("authentication/register.html", form=form)
 
 
 @authentication.route("/login", methods=["GET", "POST"])
@@ -42,9 +40,7 @@ def business_login():
         }
 
         # Find business with given email address
-        business = Business.query.filter_by(
-            emailAddress=form.emailAddress.data.lower()
-        ).first()
+        business = Business.query.get(form.businessId.data)
 
         # Login user if found
         if business:
@@ -55,7 +51,9 @@ def business_login():
                 if not next or not next.startswith("/"):
                     next = flask.url_for("accounts.profile")
 
-                flask.flash(f"Hello {current_user.fullName}. Welcome back!")
+                flask.flash(
+                    f"Hello {current_user.businessName}. " + "Welcome back!"
+                )
                 return flask.redirect(next)
 
         # Notify user of invalid credentials

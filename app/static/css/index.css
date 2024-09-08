@@ -286,3 +286,24 @@ footer a:hover {
 	object-fit: contain;
 }
 
+.custom-btn-primary {
+	text-decoration: none;
+	padding: 0.75rem;
+	font-size: 1.1rem;
+	text-align: center;
+	border-radius: 50px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	width: 100%;
+	border: none;
+	background-color: #5271ff;
+	color: #ffffff;
+}
+
+h2 {
+	color: #5168c4;
+}
+
+.custom-btn-primary:hover {
+	background-color: #5168c4;
+}

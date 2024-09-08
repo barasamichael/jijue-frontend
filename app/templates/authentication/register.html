@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+Register
+{% endblock %}
+
+{% block page_content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm border-0 rounded">
+                <div class="card-body">
+                    <h3 style="color: #5168c4;" class="text-center mb-4">Create Your Account</h3>
+                    <form method="POST" action="{{ url_for('authentication.register') }}">
+                        {{ form.hidden_tag() }}
+                        <div class="form-group">
+                            {{ form.businessName.label(class="form-label") }}
+                            {{ form.businessName(class="form-control") }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form.password.label(class="form-label") }}
+                            {{ form.password(class="form-control") }}
+                        </div>
+                        <div class="form-group mt-3">
+                            {{ form.confirmPassword.label(class="form-label") }}
+                            {{ form.confirmPassword(class="form-control") }}
+                        </div>
+                        <div class="d-grid mt-4">
+                            {{ form.submit(class="custom-btn-primary") }}
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="{{ url_for('authentication.business_login') }}">Already have an account? Login here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
